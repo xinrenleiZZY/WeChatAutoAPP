@@ -1,0 +1,10 @@
+{
+    "wechat_path": "D:\\天帝殿\\Weixin\\Weixin.exe",
+    "template_path": "wechat_templates",
+    "friends_file": "friends.txt",
+    "pyautogui_pause": 0.5,
+    "use_hybrid_mode": true,
+    "auto_login_wait_time": 5,
+    "retry_times": 2,
+    "confidence": 0.7
+}
