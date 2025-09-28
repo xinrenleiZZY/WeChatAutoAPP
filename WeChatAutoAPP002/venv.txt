@@ -1,0 +1,8 @@
+# 创建虚拟环境
+python -m venv venv
+
+# 激活虚拟环境（Windows命令行）
+venv\Scripts\activate
+
+# 激活虚拟环境（PowerShell）
+.\venv\Scripts\Activate.ps1
