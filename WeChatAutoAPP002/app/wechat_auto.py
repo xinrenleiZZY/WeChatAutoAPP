@@ -16,11 +16,24 @@ import numpy as np
 from PyQt5.QtCore import QObject, pyqtSignal
 
 # 配置文件路径
-CONFIG_FILE = "wechat_config.json"
+# CONFIG_FILE = "wechat_config.json"
+# 修改为动态路径（兼容打包后环境）：
+import sys
+def get_resource_path(relative_path):
+    """获取资源文件的绝对路径（兼容PyInstaller打包）"""
+    if getattr(sys, 'frozen', False):
+        # 打包后环境
+        base_path = sys._MEIPASS
+    else:
+        # 开发环境
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+CONFIG_FILE = get_resource_path("wechat_config.json")
 DEFAULT_CONFIG = {
     "wechat_path": "D:\\天帝殿\\Weixin\\Weixin.exe",
-    "template_path": "wechat_templates",
-    "friends_file": "friends.txt",
+    "template_path": get_resource_path("wechat_templates"),
+    "friends_file": get_resource_path("friends.txt"),
     "pyautogui_pause": 0.5,
     "use_hybrid_mode": True,
     "auto_login_wait_time": 5,

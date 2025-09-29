@@ -3,9 +3,9 @@
 # This file can be used with pip to install all required packages.
 # Usage: pip install -r requirements.txt
 # Generated on 2025-09-26
-PyQt5==5.15.9
+PyQt5==5.15.4
 PyQt5-Qt5==5.15.2
-PyQt5-sip==12.12.1
+PyQt5-sip==12.9.0
 pyautogui==0.9.54
 pygetwindow==0.0.9
 Pillow==10.0.0

@@ -1,9 +1,15 @@
 import sys
 import os
-from PyQt5.QtWidgets import QApplication, QMessageBox
+# from PyQt5.QtWidgets import QApplication, QMessageBox
 from PyQt5.QtCore import QThread, pyqtSignal
-from .ui_main import MainWindow
-from .wechat_auto import WeChatAuto, ConfigManager
+from app.ui_main import MainWindow
+from app.wechat_auto import WeChatAuto, ConfigManager
+from PyQt5.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
+                           QTabWidget, QLabel, QLineEdit, QTextEdit, QPushButton,
+                           QGroupBox, QProgressBar, QSplitter, QFormLayout,
+                           QDoubleSpinBox, QCheckBox, QSpinBox, QFileDialog, 
+                           QScrollArea,QApplication, QMessageBox
+                           )
 
 class WorkerThread(QThread):
     log_signal = pyqtSignal(str)
@@ -93,11 +99,14 @@ class WeChatApp:
             self.window.statusBar().showMessage("设置保存失败")
     
     def browse_wechat_path(self):
-        path, _ = QFileDialog.getOpenFileName(
-            self.window, "选择微信程序", "", "可执行文件 (*.exe)"
-        )
-        if path:
-            self.window.wechat_path_input.setText(path)
+        try:
+            path, _ = QFileDialog.getOpenFileName(
+                self.window, "选择微信程序", "", "可执行文件 (*.exe)"
+            )
+            if path:
+                self.window.wechat_path_input.setText(path)
+        except Exception as e:
+            self.show_error(f"选择微信程序失败: {str(e)}")  
     
     def browse_template_path(self):
         path = QFileDialog.getExistingDirectory(
